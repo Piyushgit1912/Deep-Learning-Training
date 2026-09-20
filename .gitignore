@@ -1,0 +1,54 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+env/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Datasets downloaded by the notebooks (tf.keras.utils.get_file(..., cache_dir='.'))
+datasets/
+flower_photos*/
+
+# Files produced when running the scripts
+output.avi
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environments
+env/
+venv/
+ENV/
+.env
+
+# Jupyter Notebook Checkpoints
+.ipynb_checkpoints/
+
+# Data & Model Weights (large files)
+*.zip
+*.tar.gz
+*.h5
+*.pth
+*.onnx
+*.bin
+*.pt
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# IDE settings
+.vscode/
+.idea/
