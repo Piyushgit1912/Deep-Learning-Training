@@ -28,3 +28,23 @@ labels=[1,1,0,0]
 tokenizer= Tokenizer()
 # Build the vocabulary from the training texts
 tokenizer.fit_on_texts(texts)
+
+# Convert each text into a list of word ids
+seq= tokenizer.texts_to_sequences(texts)
+
+# Pad with zeros so all sequences have the same length
+X= pad_sequences(seq)
+y= np.array(labels)
+
+# +1 because id 0 is reserved for padding
+vocab_size= len(tokenizer.word_index)+1
+
+print('training data shape --', X.shape)
+
+
+
+# Model: Embedding -> SimpleRNN -> Dense(sigmoid)
+model= Sequential([
+    # Embedding: learn an 8-dimensional vector for every word
+    Embedding(vocab_size, 8, input_length=X.shape[1]),
+    # SimpleRNN: reads the sequence word by word and keeps a 16-unit hidden state
