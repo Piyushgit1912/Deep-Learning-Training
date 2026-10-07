@@ -48,3 +48,23 @@ model= Sequential([
     # Embedding: learn an 8-dimensional vector for every word
     Embedding(vocab_size, 8, input_length=X.shape[1]),
     # SimpleRNN: reads the sequence word by word and keeps a 16-unit hidden state
+    SimpleRNN(16),
+    # One sigmoid neuron: probability that the message is spam
+    Dense(1, activation='sigmoid')
+])
+
+# Binary cross-entropy for a 2-class problem; Adam optimiser
+model.compile( 
+    optimizer='adam',
+    loss= 'binary_crossentropy',
+    metrics=['accuracy']
+
+)
+
+# Train for 40 epochs
+model.fit(X, y, epochs= 40, verbose=1)
+
+# Try an unseen message: reuse the same tokenizer and pad to the training length
+test_text= ['win money now using lottery ']
+
+test_seq= tokenizer.texts_to_sequences(test_text)
