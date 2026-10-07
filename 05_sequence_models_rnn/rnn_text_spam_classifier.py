@@ -69,15 +69,3 @@ test_text= ['win money now using lottery ']
 
 test_seq= tokenizer.texts_to_sequences(test_text)
 test_pad= pad_sequences(test_seq, maxlen= X.shape[1])
-
-# Predicted probability of spam
-prediction = model.predict(test_pad)
-
-print( 'predicted vakuee--', prediction)
-
-# Threshold at 0.5 to decide the class
-if prediction > 0.5:
-    print( 'spam mesaage')
-else:
-    print('not spam')
-    
