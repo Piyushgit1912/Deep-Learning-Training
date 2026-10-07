@@ -74,3 +74,10 @@ test_pad= pad_sequences(test_seq, maxlen= X.shape[1])
 prediction = model.predict(test_pad)
 
 print( 'predicted vakuee--', prediction)
+
+# Threshold at 0.5 to decide the class
+if prediction > 0.5:
+    print( 'spam mesaage')
+else:
+    print('not spam')
+    
