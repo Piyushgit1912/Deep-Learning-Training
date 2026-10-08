@@ -26,3 +26,17 @@ while (cap.isOpened()):
     if ret:
         # Shrink to 60% for display only
         resize_frame = cv2.resize(frame, (0, 0), fx=0.6, fy=0.6, interpolation=cv2.INTER_AREA)
+        # Record the original-size frame
+        output.write(frame)
+        # Show the live preview
+        cv2.imshow("Frame", resize_frame)
+
+        # Press '1' to quit
+        if cv2.waitKey(1)&0xFF==ord('1'):
+            break
+    else:
+        break
+# Release the writer, camera and windows
+output.release()
+cap.release()
+cv2.destroyAllWindows()
