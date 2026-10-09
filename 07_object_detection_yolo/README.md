@@ -13,6 +13,3 @@
 pip install ultralytics opencv-python
 python yolo_image_detection.py
 ```
-
-
-## Tested with YOLOv8n
