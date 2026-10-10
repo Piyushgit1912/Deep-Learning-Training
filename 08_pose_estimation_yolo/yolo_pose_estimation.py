@@ -43,3 +43,23 @@ def detect_pose(keypoints):
     # Shoulders above the hips -> upright / standing
     if left_shoulder[1] < left_hip[1] and right_shoulder[1] < right_hip[1]:
             return 'Standing'
+
+    # No rule matched
+    return 'Unknown Pose'
+
+# Main loop: grab a frame, detect poses, overlay the result
+while True:
+        ret, frame= cap.read()
+        if not ret:
+         break
+
+        # Run pose estimation on the frame
+        results = model(frame)
+
+        # Default label when nobody is detected
+        pose_name= 'No Person'
+
+
+        for r in results:
+                 if r.keypoints is not None:
+                         # Keypoint coordinates for every detected person, shape (people, 17, 2)
