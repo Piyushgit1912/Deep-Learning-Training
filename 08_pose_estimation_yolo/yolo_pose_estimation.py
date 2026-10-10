@@ -63,3 +63,26 @@ while True:
         for r in results:
                  if r.keypoints is not None:
                          # Keypoint coordinates for every detected person, shape (people, 17, 2)
+                         keypoints= r.keypoints.xy.cpu().numpy()
+
+                         if len(keypoints)>0:
+                                 # Use only the first detected person
+                                 kp=keypoints[0]
+                                 pose_name= detect_pose(kp)
+
+        # Draw the skeleton and boxes on the frame
+        annotated= results[0].plot()
+
+        # Overlay the pose name on the image
+        cv2.putText(
+                annotated,pose_name,(30,50), cv2.FONT_HERSHEY_SIMPLEX, 1,(0,255,0),2,)
+        
+        # Show the annotated frame
+        cv2.imshow('YOLO Pose Detection', annotated)
+
+        # Press 'q' to quit
+        if cv2.waitKey(1)& 0xFF== ord('q'):
+                break
+
+cap.release()
+cv2.destroyAllWindows()
