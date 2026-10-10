@@ -18,3 +18,28 @@ cap=cv2.VideoCapture(0)
 
 # Rule-based pose classifier. `keypoints` is a (17, 2) array of (x, y) pixel coordinates.
 # Indices used: 5/6 = left/right shoulder, 9/10 = left/right wrist, 11/12 = left/right hip.
+# NOTE: in images the y axis grows DOWNWARD, so 'wrist y < shoulder y' means the wrist is ABOVE the shoulder.
+def detect_pose(keypoints):
+
+
+
+    # Pick out the joints we need
+    left_shoulder=keypoints[5]
+    right_shoulder=keypoints[6]
+    left_wrist=keypoints[9]
+    right_wrist=keypoints[10]
+    left_hip=keypoints[11]
+    right_hip=keypoints[12]
+
+
+    # Both wrists above the shoulders -> hands up
+    if left_wrist[1] < left_shoulder[1] and right_wrist[1] < right_shoulder[1]:
+        return 'Hands up POSE'
+
+    # Both wrists roughly level with the shoulders (within 40 px) -> T-pose
+    if abs( left_wrist[1]- left_shoulder[1])< 40 and abs( right_wrist[1] - right_shoulder[1]) < 40:
+                                            return 'T pose'
+
+    # Shoulders above the hips -> upright / standing
+    if left_shoulder[1] < left_hip[1] and right_shoulder[1] < right_hip[1]:
+            return 'Standing'
