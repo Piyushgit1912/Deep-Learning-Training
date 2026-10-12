@@ -28,3 +28,46 @@ Knowledge = [
 # Create Embedding for Knowledge Base
 sentance_vectors = []
 
+for sentance in Knowledge:
+    doc = nlp(sentance)
+    # doc.vector is the average of the word vectors (300 values for en_core_web_md)
+    sentance_vectors.append(doc.vector)
+
+sentance_vectors = np.array(sentance_vectors)
+
+# Cosine Similarity Function
+
+# cosine similarity = (v1 . v2) / (|v1| * |v2|): compares the direction of two vectors and ignores their length
+def cosine_similarity(v1, v2):
+    return np.dot(v1, v2) / (np.linalg.norm(v1) * np.linalg.norm(v2))
+
+# Question Answering Loop
+
+print("=" * 60)
+print("  Question Answering System using spaCy  Embeddings")
+print("=" * 60)
+
+while True:
+
+    question = input("\n Ask a Question (Type 'exit' to quit): ")
+
+    if question.lower() == 'exit':
+        print("\nThank You !")
+        break
+
+    # Question embedding
+    question_vector = nlp(question).vector
+    similarities = []
+
+    # Compare with every sentance
+    for vector in sentance_vectors:
+        score = cosine_similarity(question_vector, vector)
+        similarities.append(score)
+
+    similarities = np.array(similarities)
+    # Index of the most similar knowledge sentence
+    best_index = np.argmax(similarities)
+
+    print("\nAnswer: ")
+    print(Knowledge[best_index])
+    print("Similarity Score: ", round(similarities[best_index], 3))
