@@ -28,3 +28,42 @@ doc = nlp(Knowledge)
 sentances = list(doc.sents)
 
 print("=" * 60)
+print("  Question Answering System using spaCy")
+print("=" * 60)
+print("Type 'exit' to stop. \n")
+
+# Interactive loop: ask -> find the most similar knowledge sentence -> print it
+while True:
+
+    question = input("Ask a Question: ")
+
+    if question.lower() == 'exit':
+        print("\nThank You !")
+        break
+
+    # Turn the question into a spaCy Doc (this also gives it a vector)
+    question_doc = nlp(question)
+    # Keep track of the best match found so far
+    best_sentance = None
+    best_score = 0
+
+    for sentance in sentances:
+        # Cosine similarity between question and sentence vectors (higher = more alike)
+        score = question_doc.similarity(sentance)
+
+        if score > best_score:
+            best_score = score
+            best_sentance = sentance
+
+    print("\nAnswer: ")
+
+    # The answer is the highest-scoring sentence
+    if best_sentance is not None:
+        print(best_sentance.text.strip())
+        print(f"Similarity Score: {best_score:.2f}")
+    else:
+        print("Sorry, I couldn't find a suitable answer.")
+        print(f"Similarity Score: {best_score:.2f}")
+
+    print("-" * 60)
+
