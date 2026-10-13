@@ -70,3 +70,10 @@ deep-learning-journey/
 ## Notes on the code
 
 * **`NOTE:` comments** mark places where the original code has a known bug or surprising behaviour (for example a typo that raises an
+  error, or a mislabelled class list). The code itself was intentionally left unchanged so it still shows the learning progression;
+  the comments explain what is wrong and how to fix it.
+* **`drafts/` folders** keep earlier versions of a script next to the improved one. Notebooks `05_..._v1_...` and `06_..._v2_...`
+  in section 03 are the same idea: v1 is the first attempt, v2 the improved version.
+* Data and asset files keep their original names (for example `car_vedio.mp4`, `data-01-test-score - data-01-test-score.csv`)
+  because the code refers to them by those exact names.
+* Not included in the repository: `video1.mp4` (used by `06_opencv_basics/read_resize_and_save_video.py` - add any video of your own).
