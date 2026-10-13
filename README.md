@@ -58,3 +58,15 @@ deep-learning-journey/
 |-- 06_opencv_basics/                         3 scripts + sample image
 |-- 07_object_detection_yolo/                 4 scripts + weights + sample image/video
 |-- 08_pose_estimation_yolo/                  1 script + pose weights
+|-- 09_face_recognition/                      2 scripts + trained model + sample dataset (+ drafts/)
+|-- 10_nlp_and_chatbots/
+|   |-- rule_based/                           regex / if-elif chatbots (+ drafts/)
+|   |-- embedding_based/                      spaCy similarity Q&A bots (+ drafts/)
+|   `-- voice_assistant/                      speech-to-text, text-to-speech, voice Q&A
+|-- requirements.txt
+`-- README.md
+```
+
+## Notes on the code
+
+* **`NOTE:` comments** mark places where the original code has a known bug or surprising behaviour (for example a typo that raises an
