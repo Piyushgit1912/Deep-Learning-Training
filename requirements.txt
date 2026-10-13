@@ -1,0 +1,26 @@
+# Core
+numpy
+matplotlib
+seaborn
+scikit-learn
+jupyter
+pillow
+
+# Deep learning (sections 01-05)
+tensorflow
+keras
+tensorflow-hub
+tensorflow-datasets
+
+# Computer vision (sections 06-09)
+# opencv-contrib-python includes the main OpenCV modules plus cv2.face (needed for face recognition).
+# Do not install it together with opencv-python.
+opencv-contrib-python
+ultralytics
+
+# NLP and voice assistant (section 10)
+# After installing run:  python -m spacy download en_core_web_md
+spacy
+SpeechRecognition
+pyttsx3
+PyAudio
