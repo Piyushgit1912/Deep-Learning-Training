@@ -43,3 +43,18 @@ jupyter notebook
 
 * **Run each notebook or script from inside its own folder.** Data files, images, videos and model weights are loaded with
   relative paths (for example `image3.png`, `yolov8n.pt`, the CSV files), and they are stored next to the code that uses them.
+* Notebooks that use the flower dataset or MNIST/CIFAR-10 download the data automatically on first run.
+* Scripts that use a webcam or microphone (06, 07 webcam, 08, 09, 10 voice assistant) need that hardware.
+
+## Repository layout
+
+```
+deep-learning-journey/
+|-- 01_neural_network_fundamentals/           6 notebooks (+ 1 scratch notebook)
+|-- 02_keras_regression_and_classification_labs/  6 notebooks + 4 CSV datasets
+|-- 03_image_classification_cnn/              6 notebooks
+|-- 04_transfer_learning/                     1 notebook + sample image + ImageNet labels
+|-- 05_sequence_models_rnn/                   RNN spam classifier
+|-- 06_opencv_basics/                         3 scripts + sample image
+|-- 07_object_detection_yolo/                 4 scripts + weights + sample image/video
+|-- 08_pose_estimation_yolo/                  1 script + pose weights
