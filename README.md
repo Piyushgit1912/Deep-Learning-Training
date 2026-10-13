@@ -23,3 +23,23 @@ and the code is annotated step by step.
 
 Suggested order: follow the numbers. Sections 01-02 are the foundation; 03-05 build on them; 06-10 are applications.
 
+## Getting started
+
+```bash
+git clone <your-repo-url>
+cd deep-learning-journey
+
+python -m venv .venv
+source .venv/bin/activate          # Windows: .venv\Scripts\activate
+pip install -r requirements.txt
+
+# only needed for the chatbot section (10)
+python -m spacy download en_core_web_md
+
+jupyter notebook
+```
+
+### Running the code
+
+* **Run each notebook or script from inside its own folder.** Data files, images, videos and model weights are loaded with
+  relative paths (for example `image3.png`, `yolov8n.pt`, the CSV files), and they are stored next to the code that uses them.
